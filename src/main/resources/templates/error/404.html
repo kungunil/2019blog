@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:include="common :: commonheader(~{::title},~{::link})">
+    <meta charset="UTF-8">
+    <title>404</title>
+    <link href="#" rel="stylesheet">
+</head>
+<body>
+    <!--引入导航部分-->
+    <div th:replace="common :: commonnav(0)"></div>
+    <div class="m-container-small m-padded-tb-massive">
+    <div class="ui error message ">
+        <div class="ui  m-padded-tb-massive grid stackable ">
+            <div class="eight wide column  ">
+                <div class="ui segment m-padded-tb-massive-lll">
+                    <h2 style="align-content: center">404</h2>
+                    <p>对不起,您访问的资源不存在</p>
+                </div>
+            </div>
+            <div class="eight wide column ">
+                <img alt="" class="ui rounded image" src="" th:src="@{/images/404.png}" style="height: 25em">
+            </div>
+        </div>
+    </div>
+</div>
+
+    <!--引入footer-->
+    <div th:replace="common :: commonfooter"></div>
+</body>
+</html>

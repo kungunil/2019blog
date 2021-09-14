@@ -1,0 +1,35 @@
+spring:
+  profiles:
+    active: dev
+
+
+
+
+
+  druid:
+    stat-view-servlet:
+      enabled: true
+      login-username: admin
+      login-password: 123456
+    filters: stat,wall
+    filter:
+      stat:
+        slow-sql-millis: 1000
+        enabled: true
+      wall:
+        enabled: true
+
+    web-stat-filter:
+      enabled: true
+      url-pattern: /*
+      exclusions: '*.js,*.gif,*.jpg,*.png,*.css,*.ico,/druid/*'
+    aop-patterns: com.myblog.*
+
+
+    #分页pageHelper
+    pagehelper:
+      helper-dialect: mysql
+      reasonable: true
+      support-methods-arguments: true
+
+

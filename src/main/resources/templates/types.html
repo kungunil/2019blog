@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:include="common :: commonheader(~{::title},~{::link})">
+    <title>分类页</title>
+    <link rel="stylesheet" href="#">
+</head>
+<body>
+<!--引入导航部分-->
+<div th:replace="common :: commonnav(2)"></div>
+
+<!--中间内容-->
+<div class="m-container-small m-padded-tb-big">
+    <div class="ui container">
+        <!--                ---------Header------->
+        <div class="ui top attached segment">
+            <div class="ui middle aligned two column grid ">
+                <div class="column">
+                    <h3 class="ui teal header">分类</h3>
+                </div>
+                <div class="right aligned column">
+                    共 <h2 class="ui orange header m-inline-block m-text-thin" th:text="${#arrays.length(types)}">14</h2>个
+                </div>
+            </div>
+        </div>
+        <!--标签-->
+        <div class="ui attached segment m-padded-tb-large">
+            <div class="ui labeled button m-margin" th:each="item : ${types}">
+                <a href="" th:classappend="${item.id == activeTypeId} ? 'teal'" th:href="@{/types/{id}(id=${item.id})}" class="ui basic  button" th:text="${item.name}">Java</a>
+                <div class="ui basic  left pointing label" th:classappend="${item.id == activeTypeId} ? 'teal'" th:text="${#arrays.length(item.blogs)}">24</div>
+            </div>
+        </div>
+    </div>
+        <!--标签对应的博客文章-->
+    <!--Content-->
+    <div class="ui attached segment">
+        <div th:each="blog,iterStat : ${page.content}" class="ui padded vertical segment m-padded-tb-large">
+            <div class="ui grid stackable  mobile reversed">
+                <div class="eleven wide column">
+                    <a th:href="@{/blogs/{id}(id=${blog.id}) }" target="_blank"> <h3 th:text="${blog.title}" class="ui header">第一篇文章</h3></a>
+                    <p th:text="${blog.description}" class="m-text">111111111111111111</p>
+                    <div class="ui stackable grid">
+                        <div class="eleven wide column">
+                            <div class="ui mini horizontal link list">
+                                <div class="item">
+                                    <img th:src="@{${blog.user.avatar}}" src="https://picsum.photos/seed/picsum/100/100" alt="" class="ui avatar image">
+                                    <div th:text="${blog.user.nickname}" class="content"><a href="#" class="header">黄龙</a></div>
+                                </div>
+                                <div class="item">
+                                    <i class="calendar icon"></i><span  th:text="${#dates.format(blog.updateTime,'yyyy-MM-dd')}">2021-8-5</span>
+                                </div>
+                                <div th:text="${blog.views}" class="item"><i class="eye icon"></i>2154</div>
+                            </div>
+                        </div>
+                        <div class=" right aligned five wide column">
+                            <a  th:text="${blog.type.name}" href="#"  target="_blank" class="ui label teal basic m-padded-mini m-text-thin">认知升级</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="five wide column">
+                    <a href="#"th:href="@{ /blogs/{id}(id=${blog.id}) }" target="_blank">
+                        <img th:src="@{ ${blog.firstPicture} }" src="https://picsum.photos/seed/picsum/800/400" alt="" class="ui rounded image">
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--footer-->
+    <div class="ui bottom attached segment ">
+        <div class="ui middle aligned two column grid">
+            <div class="column">
+                <a th:href="@{/types/{id}(id=${activeTypeId},page=${page.number}-1)}" th:unless="${page.first}" href=""
+                   class="ui mini teal basic button">上一页</a>
+            </div>
+            <div class="right aligned column">
+                <a th:href="@{/types/{id}(id=${activeTypeId},page=${page.number}+1)}" th:unless="${page.last}" href=""
+                   class="ui mini teal basic button">下一页</a>
+            </div>
+        </div>
+    </div>
+    </div>
+</div>
+
+<!--引入footer-->
+<div th:replace="common :: commonfooter"></div>
+<!--引入js-->
+<th:block th:replace="common :: script">
+</th:block>
+</body>
+</html>
