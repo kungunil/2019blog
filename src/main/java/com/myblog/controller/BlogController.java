@@ -18,6 +18,12 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpSession;
 
+
+/**
+ * @Author: huanlong
+ *
+ *
+ * **/
 @Controller
 @RequestMapping("/admin")
 public class BlogController {

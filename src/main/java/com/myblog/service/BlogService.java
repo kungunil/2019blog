@@ -5,11 +5,12 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created with IntelliJ IDEA.
  *
- * @Author: huanglong
+ * @Author: huanglong ,chengyanyu
  * @Date: 2021/10/5:29
  * @Description:
  */
@@ -32,5 +33,10 @@ public interface BlogService {
 
 
     Page<Blog> listTypeBlog(Pageable pageable,Long id);
+
+    /*归档页面展示*/
+    Map<String,List<Blog>> archiveBlog();
+
+    Long archiveCount();
 
 }

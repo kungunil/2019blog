@@ -18,9 +18,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.criteria.*;
-import java.util.Date;
-import java.util.Iterator;
-import java.util.List;
+import java.util.*;
 import java.util.function.Function;
 
 
@@ -196,5 +194,21 @@ public class BlogServiceImpl implements BlogService {
         return blogRepository.findTypeBlog(pageable,id);
     }
 
+
+    //归档： 陈彦宇
+    @Override
+    public Map<String, List<Blog>> archiveBlog() {
+        List<String> years = blogRepository.findGroupYear();
+        HashMap<String, List<Blog>> map = new HashMap<>();
+        for (String year : years) {
+            map.put(year,blogRepository.findByYear(year));
+        }
+        return map;
+    }
+
+    @Override
+    public Long archiveCount() {
+        return blogRepository.count();
+    }
 
 }
