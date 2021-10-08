@@ -6,8 +6,8 @@ import org.springframework.data.jpa.repository.JpaRepository;
 /**
  * Created with IntelliJ IDEA.
  *
- * @Author: 黄龙
- * @Date: 2021/08/09/21:31
+ * @Author: 刘涛
+ * @Date: 2021/10/08/21:20
  * @Description:
  */
 public interface UserRepository extends JpaRepository<User,Long> {
