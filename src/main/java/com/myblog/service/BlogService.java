@@ -27,7 +27,7 @@ public interface BlogService {
 
     Blog updateBlog(long id,Blog blog);
 
-    Page<Blog> queryConditional(String title,Long typeId,Long recommend);
+
 
     List<Blog> listRecommendBlogTop(Integer size);
 

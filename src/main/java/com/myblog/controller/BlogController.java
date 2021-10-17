@@ -102,16 +102,7 @@ public class BlogController {
     }
 
 
-    /*条件查询*/
-    @PostMapping("/queryConditional")
-    public String queryConditional(@RequestParam("title") String title,
-                                   @RequestParam("type") Long typeId,
-                                   @RequestParam("recommend") Long recommend,
-                                    RedirectAttributes redirectAttributes){
-        Page<Blog> page = blogService.queryConditional(title, typeId, recommend);
-        redirectAttributes.addFlashAttribute("page",page);
-        return "redirect:/admin/blog-manage";
-    }
+
 
     public void setTypesAndTags(Model model){
         model.addAttribute("types",typeService.listType());

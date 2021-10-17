@@ -1,7 +1,6 @@
 package com.myblog.service.Impl;
 
 
-import com.myblog.dao.BlogMapper;
 import com.myblog.dao.BlogRepository;
 import com.myblog.entity.Blog;
 import com.myblog.exception.NotFoundException;
@@ -35,8 +34,7 @@ public class BlogServiceImpl implements BlogService {
     @Autowired
     private BlogRepository blogRepository;
 
-    @Autowired
-    private BlogMapper blogMapper;
+
 
 
     @Transactional
@@ -93,92 +91,7 @@ public class BlogServiceImpl implements BlogService {
         return blogRepository.save(byId);
     }
 
-    @Override
-    public Page<Blog> queryConditional(String title, Long typeId, Long recommend) {
-        List<Blog> blogs = blogMapper.queryConditional(title, typeId, recommend);
-        Page<Blog> page = new Page<Blog>() {
-            @Override
-            public int getTotalPages() {
-                return 0;
-            }
 
-            @Override
-            public long getTotalElements() {
-                return 0;
-            }
-
-            @Override
-            public <U> Page<U> map(Function<? super Blog, ? extends U> function) {
-                return null;
-            }
-
-            @Override
-            public int getNumber() {
-                return 0;
-            }
-
-            @Override
-            public int getSize() {
-                return 0;
-            }
-
-            @Override
-            public int getNumberOfElements() {
-                return 0;
-            }
-
-            @Override
-            public List<Blog> getContent() {
-                return blogs;
-            }
-
-            @Override
-            public boolean hasContent() {
-                return false;
-            }
-
-            @Override
-            public Sort getSort() {
-                return null;
-            }
-
-            @Override
-            public boolean isFirst() {
-                return false;
-            }
-
-            @Override
-            public boolean isLast() {
-                return false;
-            }
-
-            @Override
-            public boolean hasNext() {
-                return false;
-            }
-
-            @Override
-            public boolean hasPrevious() {
-                return false;
-            }
-
-            @Override
-            public Pageable nextPageable() {
-                return null;
-            }
-
-            @Override
-            public Pageable previousPageable() {
-                return null;
-            }
-
-            @Override
-            public Iterator<Blog> iterator() {
-                return null;
-            }
-        } ;
-        return page;
-    }
 
     @Override
     public List<Blog> listRecommendBlogTop(Integer size) {

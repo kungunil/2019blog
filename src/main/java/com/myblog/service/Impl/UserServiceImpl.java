@@ -24,7 +24,7 @@ public class UserServiceImpl implements UserService {
         if(username==null&& password==null){
             return null;
         }
-        User user = userRepository.findByUsernameAndPassword(username, MD5.getMD5(password));
+        User user = userRepository.findByUsernameAndPassword(username, password);
 
         return user;
     }

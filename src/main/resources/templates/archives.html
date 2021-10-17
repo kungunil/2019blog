@@ -17,45 +17,32 @@
                     <h3 class="ui teal header">归档</h3>
                 </div>
                 <div class="right aligned column">
-                    共 <h2 class="ui orange header m-inline-block m-text-thin">14</h2>篇博客
+                    共 <h2 class="ui orange header m-inline-block m-text-thin" th:text="${blogCount}">14</h2>篇博客
                 </div>
             </div>
         </div>
         <!--2021年-->
-        <div class="m-margin-large">
-            <h2 class="ui center aligned header">2021</h2>
-            <div class="ui vertical fluid menu">
-                <a href="#" target="_blank" class="ui item">
+        <th:block th:each="item : ${archiveMap}">
+            <div class="m-margin-large">
+                <h2 class="ui center aligned header" th:text="${item.key}">2021</h2>
+                <div class="ui vertical fluid menu">
+                    <a href="#" target="_blank" class="ui item" th:each="blog : ${item.value}">
                 <span>
-                    第一篇博客
-                    <div class="ui basic teal left pointing m-padded-mini mini label">8月6日</div>
+                    <span th:text="${blog.title}">第一篇博客</span>
+                    <div class="ui basic teal left pointing m-padded-mini mini label" th:text="${#dates.format(blog.updateTime,'MMMdd')}">8月6日</div>
                 </span>
-                    <div class="ui basic orange left pointing m-padded-mini mini label">原创</div>
-                </a>
-                <a href="#" target="_blank" class="ui item">
-                <span>
-                    第一篇博客
-                    <div class="ui basic teal left pointing m-padded-mini mini label">8月6日</div>
-                </span>
-                    <div class="ui basic orange left pointing m-padded-mini mini label">原创</div>
-                </a>
-                <a href="#" target="_blank" class="ui item">
-                <span>
-                    第一篇博客
-                    <div class="ui basic teal left pointing m-padded-mini mini label">8月6日</div>
-                </span>
-                    <div class="ui basic orange left pointing m-padded-mini mini label">原创</div>
-                </a>
-                <a href="#" target="_blank" class="ui item">
-                <span>
-                    第一篇博客
-                    <div class="ui basic teal left pointing m-padded-mini mini label">8月6日</div>
-                </span>
-                    <div class="ui basic orange left pointing m-padded-mini mini label">原创</div>
-                </a>
+                        <div class="ui basic orange left pointing m-padded-mini mini label" th:text="${blog.flag}">原创</div>
+                    </a>
+
+                </div>
             </div>
-        </div>
-        <div class="m-margin-large">
+        </th:block>
+
+
+
+
+
+        <!--<div class="m-margin-large">
             <h2 class="ui center aligned header">2021</h2>
             <div class="ui vertical fluid menu">
                 <a href="#" target="_blank" class="ui item">
@@ -285,7 +272,7 @@
                     <div class="ui basic orange left pointing m-padded-mini mini label">原创</div>
                 </a>
             </div>
-        </div>
+        </div>-->
 
 
     </div>
